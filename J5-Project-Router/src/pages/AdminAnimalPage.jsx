@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FormAnimal from "../components/FormAnimal";
 import TableauAnimaux from "../components/TableauAnimaux";
-import "../styles/pages/AdminPage.scss";
+import "../styles/pages/.AdminPage.scss";
 
 const AdminAnimalPage = () => {
   const [animaux, setAnimaux] = useState([]);

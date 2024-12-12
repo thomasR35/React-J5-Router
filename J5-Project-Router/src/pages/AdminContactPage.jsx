@@ -6,7 +6,7 @@ import {
   getContactsFromStorage,
   saveContactsToStorage,
 } from "../utils/localStorage";
-import "../styles/pages/AdminPage.scss";
+import "../styles/pages/.AdminPage.scss";
 
 // Reducer pour gérer l'état des contacts
 const reducer = (state, action) => {

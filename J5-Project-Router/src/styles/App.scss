@@ -1,14 +1,14 @@
 // Import Bootstrap
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 
 // Import Component Styles
-@import "./components/Form";
-@import "./components/Table";
-@import "./components/Navbar";
+@import "./components/.Form";
+@import "./components/.Table";
+@import "./components/.Navbar";
 
 // Import Page Styles
-@import "./pages/HomePage";
-@import "./pages/AdminPage";
+@import "./pages/.HomePage";
+@import "./pages/.AdminPage";
 
 // Global Styles
 body {
