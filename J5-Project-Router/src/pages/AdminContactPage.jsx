@@ -8,24 +8,15 @@ import {
 } from "../utils/localStorage";
 import "../styles/pages/.AdminPage.scss";
 
-// Reducer pour gérer l'état des contacts
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_CONTACT":
-      return [...state, action.payload];
-    case "DELETE_CONTACT":
-      return state.filter((_, index) => index !== action.payload);
-    case "EDIT_CONTACT":
-      return state.map((contact, index) =>
-        index === action.payload.index ? action.payload.updatedContact : contact
-      );
-    default:
-      return state;
-  }
-};
+// Importation du reducer
+import contactReducer from "./contactReducer";
 
 const AdminContactPage = () => {
-  const [contacts, dispatch] = useReducer(reducer, [], getContactsFromStorage);
+  const [contacts, dispatch] = useReducer(
+    contactReducer,
+    [],
+    getContactsFromStorage
+  );
   const [editIndex, setEditIndex] = useState(null);
 
   // Sauvegarde des contacts dans le localStorage
