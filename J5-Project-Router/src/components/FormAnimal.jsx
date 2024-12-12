@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+import { animalReducer, initialState } from "../reducers/animalReducer";
 
 const FormAnimal = ({ ajouterAnimal }) => {
-  const [formData, setFormData] = useState({
-    famille: "",
-    espece: "",
-    prenom: "",
-    age: "",
-  });
+  const [formData, dispatch] = useReducer(animalReducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,38 +13,49 @@ const FormAnimal = ({ ajouterAnimal }) => {
       formData.age
     ) {
       ajouterAnimal({ ...formData, age: parseInt(formData.age, 10) });
-      setFormData({ famille: "", espece: "", prenom: "", age: "" });
+      dispatch({ type: "RESET_FORM" });
     }
+  };
+
+  const handleChange = (e) => {
+    dispatch({
+      type: "UPDATE_FIELD",
+      payload: { field: e.target.name, value: e.target.value },
+    });
   };
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
       <input
         type="text"
+        name="famille"
         placeholder="Famille"
         value={formData.famille}
-        onChange={(e) => setFormData({ ...formData, famille: e.target.value })}
+        onChange={handleChange}
         className="form-control mb-2"
       />
       <input
         type="text"
+        name="espece"
         placeholder="Espèce"
         value={formData.espece}
-        onChange={(e) => setFormData({ ...formData, espece: e.target.value })}
+        onChange={handleChange}
         className="form-control mb-2"
       />
       <input
         type="text"
+        name="prenom"
         placeholder="Prénom"
         value={formData.prenom}
-        onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
+        onChange={handleChange}
         className="form-control mb-2"
       />
       <input
         type="number"
+        name="age"
         placeholder="Âge"
         value={formData.age}
-        onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+        onChange={handleChange}
         className="form-control mb-2"
       />
       <button type="submit" className="btn btn-primary">

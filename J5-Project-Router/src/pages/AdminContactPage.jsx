@@ -9,7 +9,7 @@ import {
 import "../styles/pages/.AdminPage.scss";
 
 // Importation du reducer
-import contactReducer from "./contactReducer";
+import contactReducer from "../reducers/contactReducer";
 
 const AdminContactPage = () => {
   const [contacts, dispatch] = useReducer(
